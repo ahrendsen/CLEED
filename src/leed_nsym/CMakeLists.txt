@@ -21,14 +21,14 @@ SET(CLEED_NSYM_VERSION_MAJOR "${CPACK_PACKAGE_VERSION_MAJOR}")
 SET(CLEED_NSYM_VERSION_MINOR "${CPACK_PACKAGE_VERSION_MINOR}")
 SET(CLEED_NSYM_VERSION_PATCH "${CPACK_PACKAGE_VERSION_PATCH}")
 SET(CLEED_NSYM_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
-CONFIGURE_FILE(  "${PROJECT_SOURCE_DIR}/src/include/leed_ver.h.in"
-    "${PROJECT_SOURCE_DIR}/src/include/leed_ver.h" IMMEDIATE @ONLY )
+CONFIGURE_FILE(  "${PROJECT_SOURCE_DIR}/include/leed_ver.h.in"
+    "${PROJECT_SOURCE_DIR}/include/leed_ver.h" IMMEDIATE @ONLY )
 
 ###############################################################################
 # Sources
 ###############################################################################
-SET (cleed_nsym_SOURCE_DIR ${PROJECT_SOURCE_DIR}/src/leed_nsym CACHE STRING "" FORCE)
-SET (cleed_sym_SOURCE_DIR ${PROJECT_SOURCE_DIR}/src/leed_sym CACHE STRING "" FORCE)
+SET (cleed_nsym_SOURCE_DIR ${PROJECT_SOURCE_DIR}/leed_nsym CACHE STRING "" FORCE)
+SET (cleed_sym_SOURCE_DIR ${PROJECT_SOURCE_DIR}/leed_sym CACHE STRING "" FORCE)
 
 # basic qm functions
 SET (QMOBJ 

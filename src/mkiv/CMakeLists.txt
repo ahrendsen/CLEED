@@ -21,8 +21,8 @@ SET(MKIV_VERSION_MAJOR "${CPACK_PACKAGE_VERSION_MAJOR}")
 SET(MKIV_VERSION_MINOR "${CPACK_PACKAGE_VERSION_MINOR}")
 SET(MKIV_VERSION_PATCH "${CPACK_PACKAGE_VERSION_PATCH}")
 SET(MKIV_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
-CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/src/mkiv/mkiv_ver.h.in"
-   "${PROJECT_SOURCE_DIR}/src/mkiv/mkiv_ver.h" IMMEDIATE @ONLY )
+CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/mkiv/mkiv_ver.h.in"
+   "${PROJECT_SOURCE_DIR}/mkiv/mkiv_ver.h" IMMEDIATE @ONLY )
 
 ###############################################################################
 # Sources

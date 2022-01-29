@@ -21,8 +21,8 @@ SET(AOI_RFAC_VERSION_MAJOR "${CPACK_PACKAGE_VERSION_MAJOR}")
 SET(AOI_RFAC_VERSION_MINOR "${CPACK_PACKAGE_VERSION_MINOR}")
 SET(AOI_RFAC_VERSION_PATCH "${CPACK_PACKAGE_VERSION_PATCH}")
 SET(AOI_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
-CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/src/include/caoi_rfac.h.in"
-    "${PROJECT_SOURCE_DIR}/src/include/caoi_rfac.h" IMMEDIATE @ONLY )
+CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/include/caoi_rfac.h.in"
+    "${PROJECT_SOURCE_DIR}/include/caoi_rfac.h" IMMEDIATE @ONLY )
 
 ###############################################################################
 # Sources

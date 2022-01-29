@@ -21,8 +21,8 @@ SET(CSEARCH_VERSION_MAJOR "${CPACK_PACKAGE_VERSION_MAJOR}")
 SET(CSEARCH_VERSION_MINOR "${CPACK_PACKAGE_VERSION_MINOR}")
 SET(CSEARCH_VERSION_PATCH "${CPACK_PACKAGE_VERSION_PATCH}")
 SET(CSEARCH_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
-CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/src/include/search_ver.h.in"
-   "${PROJECT_SOURCE_DIR}/src/include/search_ver.h" IMMEDIATE @ONLY )
+CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/include/search_ver.h.in"
+   "${PROJECT_SOURCE_DIR}/include/search_ver.h" IMMEDIATE @ONLY )
 
 ###############################################################################
 # Sources

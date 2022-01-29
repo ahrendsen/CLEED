@@ -21,8 +21,8 @@ SET(CLEED_SYM_VERSION_MAJOR "${CPACK_PACKAGE_VERSION_MAJOR}")
 SET(CLEED_SYM_VERSION_MINOR "${CPACK_PACKAGE_VERSION_MINOR}")
 SET(CLEED_SYM_VERSION_PATCH "${CPACK_PACKAGE_VERSION_PATCH}")
 SET(CLEED_SYM_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
-CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/src/include/leed_ver_sym.h.in"
-   "${PROJECT_SOURCE_DIR}/src/include/leed_ver_sym.h" IMMEDIATE @ONLY )
+CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/include/leed_ver_sym.h.in"
+   "${PROJECT_SOURCE_DIR}/include/leed_ver_sym.h" IMMEDIATE @ONLY )
 
 ###############################################################################
 # Sources

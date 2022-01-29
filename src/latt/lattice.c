@@ -4,6 +4,15 @@
 #include <math.h>
 #include "lattice.h"
 
+FILE *out_stream;
+FILE *ctr_stream;
+FILE *inf_stream;
+
+int main(int argc, char *argv[])
+{
+	return (0);
+}
+
 void lattice_debug(const lattice_t *lat)
 {
   printf("(h, k, l) = (%7.4f, %7.4f, %7.4f)\n", 
@@ -593,6 +602,13 @@ miller_hkl_t *lattice_get_miller_hkl(const lattice_t *lat)
 void lattice_read(lattice_t *lat, coord_t *a1, coord_t *a2, coord_t *a3, 
                   coord_t *nor, coord_t *bas, char *bas_name, int *n_bas)
 {
+  /********************************************************
+   * Preset input / output streams
+   ********************************************************/
+  
+  out_stream = stdout;
+  ctr_stream = stdout;
+  inf_stream = stderr;
 
   FILE *inp_stream = stdin;
   coord_t faux = {.x=0., .y=0., .z=0.};
