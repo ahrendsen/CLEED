@@ -4,7 +4,7 @@ CLEED package
 Karl's Version
 --------------
 I'm attempting to get this program to work in 2022 and running into difficulties. I'm recording 
-my struggles (here)[READMEkarl.md] so that they might benefit someone else who is in a similar situation.
+my struggles [here](Readmekarl.md) so that they might benefit someone else who is in a similar situation.
 
 Introduction
 ------------
