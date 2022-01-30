@@ -40,7 +40,7 @@ GH/08.08.95 - Creation (copy from leed_read_overlayer).
 int leed_write_par(leed_cryst_t *bulk_par,
               leed_phs_t   *phs_shifts,
               leed_var_t   *par,
-              leed_energy_t   *eng,
+              leed_eng_t   *eng,
               leed_beam_t  *beams,
               FILE* file)
 
@@ -226,14 +226,14 @@ size_t tot_size;
 *************************************************************************/
 
 /* parameters */
- if( fwrite(eng, sizeof(leed_energy_t), 1, file) != 1 )
+ if( fwrite(eng, sizeof(leed_eng_t), 1, file) != 1 )
  {
  #ifdef ERROR
    ERR_MESS0("*** error (leed_write_par): "
     "output error while writing energy parameters\n");
 #endif
  }
- tot_size += sizeof(leed_energy_t) * 1;
+ tot_size += sizeof(leed_eng_t) * 1;
 
 /************************************************************************
   Write beam list to file.

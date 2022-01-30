@@ -46,14 +46,19 @@ int leed_read_overlayer(leed_cryst_t ** , leed_phs_t ** , leed_cryst_t * , char 
 int leed_read_overlayer_nd(leed_cryst_t **, leed_phs_t **, leed_cryst_t *, char *);
 int leed_read_overlayer_sym(leed_cryst_t ** , leed_phs_t ** , leed_cryst_t * , char *);
    /* read other parameters; file linprdpar.c */
-int leed_inp_leed_read_par(leed_var_t **, leed_energy_t **, leed_cryst_t * , char *);
+//int leed_inp_leed_read_par(leed_var_t **, leed_energy_t **, leed_cryst_t * , char *); // Originai line
+int leed_inp_leed_read_par(leed_var_t **, leed_eng_t **, leed_cryst_t * , char *);	// KARL modified line
    /* show all parameters; file linpshowbop.c */
 int leed_inp_show_beam_op(leed_cryst_t *, leed_cryst_t *, leed_phs_t *);
    /* read and write parameters */
+//int leed_write_par(leed_cryst_t *, leed_phs_t *, leed_var_t *, // original lines
+//              leed_energy_t *, leed_beam_t *, FILE * );        // original lines
 int leed_write_par(leed_cryst_t *, leed_phs_t *, leed_var_t *,
-              leed_energy_t *, leed_beam_t *, FILE * );
+              leed_eng_t *, leed_beam_t *, FILE * ); // KARL modified line
+//int leed_read_par(leed_cryst_t **, leed_phs_t **, leed_var_t **, // original lines
+//             leed_energy_t **, leed_beam_t **, FILE * );         // original lines
 int leed_read_par(leed_cryst_t **, leed_phs_t **, leed_var_t **,
-             leed_energy_t **, leed_beam_t **, FILE * );
+             leed_eng_t **, leed_beam_t **, FILE * ); // KARL modified line
 
 int leed_check_rotation_sym(leed_cryst_t *);
 int leed_check_mirror_sym(leed_cryst_t *);
@@ -100,7 +105,8 @@ int pc_mk_ms(mat * , mat *, mat *, mat *, mat *, mat *, int );
 *********************************************************************/
 int leed_out_head(FILE *);
 int leed_out_head_2(const char *, const char *, FILE *);
-int leed_output_beam_list(leed_beam_t **, leed_beam_t *, leed_energy_t *, FILE *);
+//int leed_output_beam_list(leed_beam_t **, leed_beam_t *, leed_energy_t *, FILE *); // original line
+int leed_output_beam_list(leed_beam_t **, leed_beam_t *, leed_eng_t *, FILE *); // KARL modified line
 int leed_output_int(mat , leed_beam_t *, leed_beam_t *, leed_var_t *, FILE * );
 int leed_output_iint_sym(mat , leed_beam_t *, leed_beam_t *, leed_var_t *, FILE * );
 

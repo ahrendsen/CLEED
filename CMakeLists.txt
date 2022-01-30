@@ -48,7 +48,7 @@ SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Automated Surface Structure determination
 SET(CPACK_PACKAGE_VENDOR "Liam Deacon")
 SET(CPACK_PACKAGE_CONTACT "liam.deacon@diamond.ac.uk")
 SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_BINARY_DIR}/../LICENSE.txt")
-SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_BINARY_DIR}/../README.md")
+SET(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_BINARY_DIR}/../Readme.md")
 SET(CPACK_RESOURCE_FILE_NOTES "${CMAKE_CURRENT_BINARY_DIR}/../RELEASE_NOTES.txt")
 SET(CPACK_RESOURCE_FILE_CHANGELOG "${CMAKE_CURRENT_BINARY_DIR}/../ChangeLog.txt")
 SET(CPACK_PACKAGE_VERSION_MAJOR "2014")
@@ -755,41 +755,41 @@ ELSE (WIN32)
                     "
                 )
                 
-                # Debian packaging
-                INCLUDE (${CMAKE_MODULE_PATH}/DpkgBuild.cmake)
-                
-                IF(DPKG_FOUND AND NOT WIN32)
-                    SET(CPACK_GENERATOR "${CPACK_GENERATOR};DEB")
-                    SET(CPACK_DEBIAN_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
-                    SET(CPACK_DEBIAN_PACKAGE_VERSION ${CPACK_PACKAGE_VERSION})
-                    SET(CPACK_DEBIAN_PACKAGE_DESCRIPTION ${CPACK_PACKAGE_DESCRIPTION_SUMMARY})
-                    SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
-                    SET(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
-                    SET(CPACK_DEBIAN_PACKAGE_DEBUG ON)
-                    SET(CPACK_DEBIAN_PACKAGE_DEPENDS ${PACKAGE_REQUIRES})
-                    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libtiff ( >= 3.0 ), libpng, libz") # Specify dependencies here
-                    SET(CPACK_DEBIAN_PACKAGE_SUGGESTS "ImageMagick, Python")
-                    SET(CPACK_SET_DESTDIR TRUE)
-                ENDIF(DPKG_FOUND AND NOT WIN32)
-                
-                # RPM packaging
-                INCLUDE (${CMAKE_MODULE_PATH}/RpmBuild.cmake)
-                
-                IF (RPM_FOUND AND NOT WIN32)
-                    SET(CPACK_GENERATOR "${CPACK_GENERATOR};RPM")
-                    SET(CPACK_RPM_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
-                    SET(CPACK_RPM_PACKAGE_VERSION ${CPACK_PACKAGE_VERSION})
-                    SET(CPACK_RPM_PACKAGE_DESCRIPTION ${CPACK_PACKAGE_DESCRIPTION_SUMMARY})
-                    SET(CPACK_RPM_PACKAGE_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
-                    SET(CPACK_RPM_PACKAGE_PRIORITY "optional")
-                    SET(CPACK_RPM_PACKAGE_LICENSE "${LICENSE}")
-                    SET(CPACK_RPM_PACKAGE_DEBUG ON)
-                    SET(CPACK_RPM_PACKAGE_REQUIRES ${PACKAGE_REQUIRES})
-                    SET(CPACK_RPM_PACKAGE_REQUIRES "libtiff ( >= 3.0 ), libpng, libz") # Specify dependencies here
-                    SET(CPACK_SET_DESTDIR TRUE)
-                    SET(CPACK_RPM_PACKAGE_SUGGESTS "ImageMagick, Python")
-                    SET(CPACK_RPM_PACKAGE_URL "${CPACK_PACKAGE_URL}")
-                ENDIF (RPM_FOUND AND NOT WIN32)
+								## Debian packaging
+								#INCLUDE (${CMAKE_MODULE_PATH}/DpkgBuild.cmake)
+                #
+                #IF(DPKG_FOUND AND NOT WIN32)
+                #    SET(CPACK_GENERATOR "${CPACK_GENERATOR};DEB")
+                #    SET(CPACK_DEBIAN_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
+                #    SET(CPACK_DEBIAN_PACKAGE_VERSION ${CPACK_PACKAGE_VERSION})
+                #    SET(CPACK_DEBIAN_PACKAGE_DESCRIPTION ${CPACK_PACKAGE_DESCRIPTION_SUMMARY})
+                #    SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
+                #    SET(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+                #    SET(CPACK_DEBIAN_PACKAGE_DEBUG ON)
+                #    SET(CPACK_DEBIAN_PACKAGE_DEPENDS ${PACKAGE_REQUIRES})
+                #    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libtiff ( >= 3.0 ), libpng, libz") # Specify dependencies here
+                #    SET(CPACK_DEBIAN_PACKAGE_SUGGESTS "ImageMagick, Python")
+                #    SET(CPACK_SET_DESTDIR TRUE)
+                #ENDIF(DPKG_FOUND AND NOT WIN32)
+                #
+                ## RPM packaging
+                #INCLUDE (${CMAKE_MODULE_PATH}/RpmBuild.cmake)
+                #
+                #IF (RPM_FOUND AND NOT WIN32)
+                #    SET(CPACK_GENERATOR "${CPACK_GENERATOR};RPM")
+                #    SET(CPACK_RPM_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
+                #    SET(CPACK_RPM_PACKAGE_VERSION ${CPACK_PACKAGE_VERSION})
+                #    SET(CPACK_RPM_PACKAGE_DESCRIPTION ${CPACK_PACKAGE_DESCRIPTION_SUMMARY})
+                #    SET(CPACK_RPM_PACKAGE_MAINTAINER "${CPACK_PACKAGE_VENDOR} <${CPACK_PACKAGE_CONTACT}>")
+                #    SET(CPACK_RPM_PACKAGE_PRIORITY "optional")
+                #    SET(CPACK_RPM_PACKAGE_LICENSE "${LICENSE}")
+                #    SET(CPACK_RPM_PACKAGE_DEBUG ON)
+                #    SET(CPACK_RPM_PACKAGE_REQUIRES ${PACKAGE_REQUIRES})
+                #    SET(CPACK_RPM_PACKAGE_REQUIRES "libtiff ( >= 3.0 ), libpng, libz") # Specify dependencies here
+                #    SET(CPACK_SET_DESTDIR TRUE)
+                #    SET(CPACK_RPM_PACKAGE_SUGGESTS "ImageMagick, Python")
+                #    SET(CPACK_RPM_PACKAGE_URL "${CPACK_PACKAGE_URL}")
+                #ENDIF (RPM_FOUND AND NOT WIN32)
                 
             ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
         

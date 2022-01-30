@@ -19,16 +19,30 @@ In order to target as many different systems in the simplest way the CLEED packa
 developed using CMake as a dependency tracking and makefile generation program. CMake is 
 available on all major desktop platforms and a GUI is also available for Windows users.
 
-Use the following command in order to install CLEED for your system:
+The dependencies on Linux can be met by installing the following packages
+		
+		sudo apt install libopenblas-dev ocl-icd-opencl-dev opencl-headers clinfo ocl-icd-libopencl1 opencl gfortran libgsl-dev qt4-dev-tools cmake-qt-gui
+
+Use the following commands in order to install CLEED for your system:
 
     cd /path/to/cleed/source
-    cmake -G <generator-name> --build build/ -i
+    cmake -G <generator-name> --build build/
+
+Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles".
+Alternatively you can accomplish the same thing in a GUI with 
+
+    cmake-gui
+
+Which is useful if you wish to be lead through the setup in a step-by-step fashion.
+For the "Source" you should select the "CLEED" folder. 
+For the "Build" you should select the "CLEED/build" folder. 
+Once you have those folders selected, you can press "Configure" 
+and then "Generate" and you're ready to proceed to the next step.
+
     cd build/
     <make> install
 
-Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles".
-<make> is usually "make" (Unix/GNU Linux) or "mingw32-make" (Windows). The '-i' option is
-voluntary, but is useful if you wish to be lead through the setup in a step-by-step fashion.
+<make> is usually "make" (Unix/GNU Linux) or "mingw32-make" (Windows). 
 
 Note Windows users will require MinGW installed (other compiler tool chains such as MSVC 
 and CYGWIN have not been tested). 

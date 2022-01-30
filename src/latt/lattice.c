@@ -4,6 +4,12 @@
 #include <math.h>
 #include "lattice.h"
 
+
+int main(int argc, char *argv[])
+{
+	return (0);
+}
+
 void lattice_debug(const lattice_t *lat)
 {
   printf("(h, k, l) = (%7.4f, %7.4f, %7.4f)\n", 
@@ -621,10 +627,10 @@ void lattice_read(lattice_t *lat, coord_t *a1, coord_t *a2, coord_t *a3,
               lat->input_filename);
       exit(1);
     }
-    fprintf(inf_stream, "Read lattice input from file \"%s\" \n",
-            lat->input_filename);
-    fprintf(ctr_stream, "Read lattice input from file \"%s\" \n", 
-            lat->input_filename);
+    //fprintf(inf_stream, "Read lattice input from file \"%s\" \n",
+    //        lat->input_filename);
+    //fprintf(ctr_stream, "Read lattice input from file \"%s\" \n", 
+    //        lat->input_filename);
   }
   
   *n_bas = MAX_INP_ATOMS;
@@ -638,10 +644,10 @@ void lattice_read(lattice_t *lat, coord_t *a1, coord_t *a2, coord_t *a3,
   while((fgets(line_buffer, STRSZ, inp_stream) != NULL) && (i_bas < *n_bas))
   {
     
-    fprintf(inf_stream, "%s", line_buffer);
-    #if DEBUG == 1
-    fprintf(ctr_stream, "%s", line_buffer);
-    #endif 
+    //fprintf(inf_stream, "%s", line_buffer);
+    //#if DEBUG == 1
+    //fprintf(ctr_stream, "%s", line_buffer);
+    //#endif 
     
     /* read lattice vectors and superstructure matrix */
     if( strncmp(line_buffer, "a1:", 3) == 0 )

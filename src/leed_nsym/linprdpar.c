@@ -34,7 +34,7 @@ CHANGES:
 /********************************************************************/
 
 int leed_inp_leed_read_par(leed_var_t ** p_var_par,
-              leed_energy_t ** p_eng_par, 
+              leed_eng_t ** p_eng_par, 
               leed_cryst_t * bulk_par,
               char *in_file)
 /*********************************************************************
@@ -43,7 +43,7 @@ int leed_inp_leed_read_par(leed_var_t ** p_var_par,
   INPUT:
  
   leed_var_t ** p_var_par 
-  leed_energy_t ** p_eng_list 
+  leed_eng_t ** p_eng_list 
   leed_cryst_t * bulk_par  bulk crystal parameters (must contain
             valid values for vr and vi). Function leed_inp_read_bul must be
             called before leed_inp_leed_read_par.
@@ -91,7 +91,8 @@ int leed_inp_leed_read_par(leed_var_t ** p_var_par,
 *********************************************************************/
 {
 leed_var_t *var_par;
-leed_energy_t *eng_par;
+//leed_energy_t *eng_par; // original line
+leed_eng_t *eng_par;		// KARL modified line
 
 int i_str;                      /* counter variables */
 int i_c;                        /* dummy variables */
@@ -119,7 +120,7 @@ char linebuffer[STRSZ];         /* input buffer */
  if (*p_eng_par == NULL) 
  {
    eng_par = *p_eng_par = 
-                (leed_energy_t *)malloc( sizeof(leed_energy_t) );
+                (leed_eng_t *)malloc( sizeof(leed_eng_t) );
  }
  else
    eng_par = *p_eng_par;
