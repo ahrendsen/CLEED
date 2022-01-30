@@ -1,3 +1,9 @@
+Attempting to Compile (Try 1)
+===
+_Note: I was decidedly doing *the wrong thing* for a portion of Try 1. 
+If you're trying to make this work for yourself, it's best to skip
+over this section. I keep it here only for historical reference._
+
 First, for whatever reason, I had broken packages on my system,
 so I had to do a
     sudo apt --fix-broken install
@@ -164,3 +170,10 @@ that worked- it did!
 
 Getting past that error resulted in a new error- again with the
 .h files.
+
+All of these errors led me to believe there must be a more straightforward way.
+I abandoned this attempt and decided to start from scratch.
+
+Attempting to Compile (Try 2)
+===
+
