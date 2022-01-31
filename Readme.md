@@ -21,7 +21,7 @@ available on all major desktop platforms and a GUI is also available for Windows
 
 The dependencies on Linux can be met by installing the following packages
 		
-		sudo apt install libopenblas-dev ocl-icd-opencl-dev opencl-headers clinfo ocl-icd-libopencl1 opencl gfortran libgsl-dev qt4-dev-tools cmake-qt-gui
+		sudo apt install libopenblas-dev ocl-icd-opencl-dev opencl-headers clinfo ocl-icd-libopencl1 opencl gfortran libgsl-dev qt4-dev-tools cmake-qt-gui libtiff-dev
 
 Use the following commands in order to install CLEED for your system:
 
