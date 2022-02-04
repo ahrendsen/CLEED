@@ -1,6 +1,7 @@
 build/
 bin/
 autom4te.cache/
+.cproject
 
 **/*.log
 **/*~
