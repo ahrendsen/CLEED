@@ -21,12 +21,14 @@ available on all major desktop platforms and a GUI is also available for Windows
 
 The dependencies on Linux can be met by installing the following packages
 		
-		sudo apt install libopenblas-dev ocl-icd-opencl-dev opencl-headers clinfo ocl-icd-libopencl1 opencl gfortran libgsl-dev qt4-dev-tools cmake-qt-gui libtiff-dev
+    sudo apt install libopenblas-dev ocl-icd-opencl-dev opencl-headers\
+     clinfo ocl-icd-libopencl1 opencl gfortran libgsl-dev\
+     qt4-dev-tools cmake-qt-gui libtiff-dev
 
 Use the following commands in order to install CLEED for your system:
 
     cd /path/to/cleed/source
-    cmake -G <generator-name> --build build/ . # Note: I can't currently get this method to work.
+    cmake -G <generator-name> --build build/
 
 Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles".
 Alternatively you can accomplish the same thing in a GUI with 
