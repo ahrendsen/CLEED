@@ -1,6 +1,14 @@
 build/
 bin/
 autom4te.cache/
+
+# Avoid auto-generated CMake files
+CMakeFiles
+CMakeCache.txt
+src/*/*_parameters
+**/*.cmake
+src/*/*/*.depends
+**/*Makefile
 .cproject
 
 **/*.log
