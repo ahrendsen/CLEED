@@ -31,7 +31,10 @@ Use the following commands in order to install CLEED for your system:
 Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles".
 Alternatively you can accomplish the same thing in a GUI with 
 
+    export RC=<your compiler>
     cmake-gui
+
+Where <your compiler> is the c compiler you are using. I use gcc.
 
 Which is useful if you wish to be lead through the setup in a step-by-step fashion.
 For the "Source" you should select the "CLEED" folder. 
