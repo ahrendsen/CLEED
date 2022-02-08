@@ -1,3 +1,6 @@
+FC.h
+.settings/
+
 build/
 bin/
 autom4te.cache/
@@ -6,6 +9,7 @@ autom4te.cache/
 CMakeFiles
 CMakeCache.txt
 src/*/*_parameters
+**/*.cmake.in
 **/*.cmake
 src/*/*/*.depends
 **/*Makefile
