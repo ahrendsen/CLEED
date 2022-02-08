@@ -26,7 +26,8 @@ The dependencies on Linux can be met by installing the following packages
 Use the following commands in order to install CLEED for your system:
 
     cd /path/to/cleed/source
-    cmake -G <generator-name> --build build/
+    export RC=gcc
+    cmake -G <generator-name> --build build/ .
 
 Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles".
 Alternatively you can accomplish the same thing in a GUI with 
