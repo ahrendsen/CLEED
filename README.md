@@ -21,23 +21,44 @@ available on all major desktop platforms and a GUI is also available for Windows
 
 The dependencies on Linux can be met by installing the following packages
 		
-		sudo apt install libopenblas-dev ocl-icd-opencl-dev opencl-headers clinfo ocl-icd-libopencl1 opencl gfortran libgsl-dev qt4-dev-tools cmake-qt-gui libtiff-dev
+    sudo apt install libopenblas-dev ocl-icd-opencl-dev \
+    opencl-headers clinfo ocl-icd-libopencl1 gfortran \
+    libgsl-dev qt4-dev-tools cmake-qt-gui libtiff-dev
+    
+There are also python packages which will be used. I'm still shaky on how
+environments work in python, but I'll assume you use Anaconda, because
+I can get it to work with that system. You should make a new conda
+environment for running CLEED, otherwise you'll run into dependency/
+version issues.
+
+    conda create -n cleed
+    conda activate cleed
+
+Then the python programs that are automatically installed shouldn't have
+version conflicts with the other python programs on your system.
 
 Use the following commands in order to install CLEED for your system:
 
     cd /path/to/cleed/source
-    cmake -G <generator-name> --build build/
-
-Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles".
-Alternatively you can accomplish the same thing in a GUI with 
-
+    export RC=gcc
     cmake-gui
 
-Which is useful if you wish to be lead through the setup in a step-by-step fashion.
 For the "Source" you should select the "CLEED" folder. 
 For the "Build" you should select the "CLEED/build" folder. 
 Once you have those folders selected, you can press "Configure" 
 and then "Generate" and you're ready to proceed to the next step.
+
+Alternatively you can accomplish the same thing in a command line 
+interface with the command
+
+    # But I haven't found out the proper syntax for this command.
+    # so you're on your own for now.
+    #cmake -G <generator-name> --build build/ . 
+
+Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles".
+	
+Once the project has been built successfully, there will be a new folder called build.
+You can then compile using the following commands.
 
     cd build/
     <make> install
