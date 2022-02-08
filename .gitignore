@@ -6,7 +6,7 @@ bin/
 autom4te.cache/
 
 # Avoid auto-generated CMake files
-CMakeFiles
+**/CMakeFiles
 CMakeCache.txt
 src/*/*_parameters
 **/*.cmake.in
