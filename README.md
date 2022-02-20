@@ -25,6 +25,15 @@ The dependencies on Linux can be met by installing the following packages
     opencl-headers clinfo ocl-icd-libopencl1 gfortran \
     libgsl-dev qt4-dev-tools cmake-qt-gui libtiff-dev
     
+Note that if you're using Ubuntu 20.04 or above, Qt4 has been removed from the 
+repositories, so qt4-dev-tools won't be found.
+I hope to work on updating the program in the future to Qt5, but for now, 
+you'll just have to install an earlier version of Ubuntu if you want to run CLEED.
+You could attempt installing qt4 on Ubuntu 20.04 as noted 
+[here](https://askubuntu.com/questions/1234786/qt4-libqt4-in-ubuntu-20-04),
+but I haven't tried this myself so I can't say if it will work, but I wish 
+you the best of luck!
+    
 There are also python packages which will be used. I'm still shaky on how
 environments work in python, but I'll assume you use Anaconda, because
 I can get it to work with that system. You should make a new conda
