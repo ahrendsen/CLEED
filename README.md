@@ -36,7 +36,20 @@ you the best of luck!
     
 There are also python packages which will be used. I'm still shaky on how
 environments work in python, but I'll assume you use Anaconda, because
-I can get it to work with that system. You should make a new conda
+I can get it to work with that system.
+
+If you don't already have anaconda installed, and you're just installing 
+it to run this program, I would recommend that you install miniconda, 
+since it will take up less space, doesn't have unneccesary programs, 
+and will install faster. You can find the download link and install 
+instructions at this webpage: 
+https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html
+
+Make sure to restart your shell after installing it.
+You'll know its installed because there will be the string '(base)' 
+before your typical command prompt now.
+
+You should make a new conda
 environment for running CLEED, otherwise you'll run into dependency/
 version issues.
 
