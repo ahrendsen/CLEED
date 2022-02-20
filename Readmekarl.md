@@ -176,4 +176,37 @@ I abandoned this attempt and decided to start from scratch.
 
 Attempting to Compile (Try 2)
 ===
+As is the custom, I make a lot of mistakes while I'm trying to install something the first time, 
+then the next time I install things go a bit easier. I learned that 
+the python related errors I got on my first try were caused by conflicts between 
+my existing python installation and packages automatically installed by the installer
+by creating a new anaconda environment, I was able to completely bypass those errors.
 
+There are some files that are included in the GitHub repository that are
+configuration files that will necessarily differ between systems but throw errors 
+when you are trying to compile.
+These should be removed from the repository, and I have done this.
+
+Refined the syntax of the cmake command according to the updated program 
+and added this information to the README file.
+
+The biggest break seems to be in the pattern, patt, and lattice files, which 
+it appears Liam was in the middle of updating when he initially committed the 
+repository. He seemed to have got things working at some point though, so I'm 
+still hopeful that if I pick the right commit, I should be able to get things 
+up and running with minimal modifications to the code. 
+
+Next step: Attempt to install from scratch on the "Happy 2015 CLEED" commit.
+This will be my last attempt at picking a random commit to see if things work. 
+After this, I'm just going to focus on resolving all of the compile errors on
+whichever version gets me to the highest compile percentage.
+
+Attempting to Compile (Try 3)
+===
+I decided to again start a new attempt COMPLETELY from scratch on a new laptop.
+In doing this, I learned that Ubuntu 20.04 dropped Qt4 support, which this program
+relied on. It then seems important that I'm able to get the program running so that
+I can attempt to port Qt4 over to Qt5 so that the program can still run on modern
+systems. I'm canceling my attempt on Try 3 and going back to Try 2, until I'm
+successful there. When I have the program running, then I'll see about converting
+it over to Qt5.
