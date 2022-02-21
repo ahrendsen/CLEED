@@ -157,7 +157,7 @@ and further into the compile process. I eventually got to
 		make[2]: *** [latt/latt] Error 1
 		CMakeFiles/Makefile2:383: recipe for target 'latt/CMakeFiles/latt.dir/all' failed
 
-This one felt familiar, as I have seen the "undefined reference to `main'
+This one felt familiar, as I have seen the "undefined reference to 'main'"
 line before. That fix is easy enough, we just added an empty
 main() function to the lattice.c program and that error no longer 
 appeared. The next two lines mentioning undefined references to 
@@ -200,6 +200,25 @@ Next step: Attempt to install from scratch on the "Happy 2015 CLEED" commit.
 This will be my last attempt at picking a random commit to see if things work. 
 After this, I'm just going to focus on resolving all of the compile errors on
 whichever version gets me to the highest compile percentage.
+
+UPDATE (2022-02-21): 
+Still getting compile errors, the same old song and dance. I thought I had 
+resolved the python errors by using the correct version of python, but I still 
+have to go in and manually correct the curexec lines. I guess I've never 
+explictily documented this. Here's the output:
+
+```
+/home/karl/gitSpace/CLEED6/CLEED/build/src/phaseshifts-0.1.3-dev/phaseshifts/cython/phsh.cpp:10459:13: error: ‘PyThreadState {aka struct _ts}’ has no member named ‘exc_type’; did you mean ‘curexc_type’?
+     tstate->exc_type = type;
+             ^~~~~~~~
+             curexc_type
+```
+
+I attempted rolling python back to earlier versions, but then I got another
+error. I'm officially in error purgatory. I tried to recreate this error
+and instead got another error. I need to abandon this project for the time 
+being.
+
 
 Attempting to Compile (Try 3)
 ===
