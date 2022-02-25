@@ -33,6 +33,12 @@ You could attempt installing qt4 on Ubuntu 20.04 as noted
 [here](https://askubuntu.com/questions/1234786/qt4-libqt4-in-ubuntu-20-04),
 but I haven't tried this myself so I can't say if it will work, but I wish 
 you the best of luck!
+
+I'm going ahead with trying the Qt5 way, since it seems like Liam Deacon
+had started the conversion process. The Qt5 packages you need to install
+are ([apparently](https://stackoverflow.com/questions/67373586/install-qt5-on-ubuntu-21-04)):
+
+    sudo apt-get install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
     
 There are also python packages which will be used. I'm still shaky on how
 environments work in python, but I'll assume you use Anaconda, because
