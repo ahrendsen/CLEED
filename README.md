@@ -25,9 +25,12 @@ The dependencies on Linux can be met by installing the following packages
     opencl-headers clinfo ocl-icd-libopencl1 gfortran \
     libgsl-dev qt4-dev-tools cmake-qt-gui libtiff-dev
     
-There are also python packages which will be used. I'm still shaky on how
-environments work in python, but I'll assume you use Anaconda, because
-I can get it to work with that system. You should make a new conda
+There are also python packages which will be used. I'll describe how you 
+can install them using Anaconda.
+
+To install anaconda,
+
+You should make a new conda
 environment for running CLEED, otherwise you'll run into dependency/
 version issues.
 
