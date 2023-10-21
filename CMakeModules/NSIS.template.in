@@ -1,4 +1,4 @@
-;@CPACK_PACKAGE_NAME@ installer script.
+;CLEED installer script.
 
 ;-----------------------------------------------------------------------------
 ; Some installer script options (comment-out options not required)
@@ -17,17 +17,17 @@
 ;-----------------------------------------------------------------------------
 !define BUILD_PATH "/home/karl/gitSpace/CLEED3/CLEED/build"
 !define SOURCE_PATH "/home/karl/gitSpace/CLEED3/CLEED"
-!define NSIS_BUILD_PATH "${BUILD_PATH}/_CPack_Packages/win32/NSIS"
+!define NSIS_BUILD_PATH "/_CPack_Packages/win32/NSIS"
 !define NSI_PATH "/home/karl/gitSpace/CLEED3/CLEED/data/win32"
 !addplugindir "/home/karl/gitSpace/CLEED3/CLEED/data/win32/Contrib/NSIS/Plugins"
 ;-----------------------------------------------------------------------------
 ; Installer version
 ;-----------------------------------------------------------------------------
-!define VER_MAJOR "@CPACK_PACKAGE_VERSION_MAJOR@"
-!define VER_MINOR "@CPACK_PACKAGE_VERSION_MINOR@"
-!define VER_BUILD "@CPACK_PACKAGE_VERSION_PATCH@"
-!define REVISION  "@CPACK_PACKAGE_VERSION_TWEAK@"
-!define VERSION   "@CPACK_PACKAGE_VERSION@"
+!define VER_MAJOR "2014"
+!define VER_MINOR "07"
+!define VER_BUILD "04"
+!define REVISION  ""
+!define VERSION   ""
 
 ;-----------------------------------------------------------------------------
 ; Installer build timestamp.
@@ -37,22 +37,22 @@
 ;-----------------------------------------------------------------------------
 ; Initial installer setup and definitions.
 ;-----------------------------------------------------------------------------
-Name "@CPACK_NSIS_PACKAGE_NAME@"
-Caption "@CPACK_PACKAGE_NAME@ Installer"
-BrandingText "@CPACK_PACKAGE_NAME@ ${VERSION} -- ${BUILD_TIME}"
-OutFile "@CPACK_TOPLEVEL_DIRECTORY@/@CPACK_OUTPUT_FILE_NAME@"
-InstallDir "$PROGRAMFILES\@CPACK_PACKAGE_INSTALL_DIRECTORY@"
-InstallDirRegKey HKCU "Software\@CPACK_PACKAGE_NAME@" ""
+Name ""
+Caption "CLEED Installer"
+BrandingText "CLEED  -- "
+OutFile "/"
+InstallDir "$PROGRAMFILES\CLEED"
+InstallDirRegKey HKCU "Software\CLEED" ""
 InstType Standard
 InstType Full
 InstType Minimal
 CRCCheck On
-SetCompressor @CPACK_NSIS_COMPRESSOR@
+SetCompressor 
 RequestExecutionLevel user ;Now using the UAC plugin.
 ReserveFile NSIS.InstallOptions.ini
-ReserveFile "${NSISDIR}\Plugins\InstallOptions.dll"
+ReserveFile "\Plugins\InstallOptions.dll"
 
-@CPACK_NSIS_SECTION_SELECTED_VARS@
+
 
 ;-----------------------------------------------------------------------------
 ; Include some required header files.
@@ -75,36 +75,36 @@ ReserveFile "${NSISDIR}\Plugins\InstallOptions.dll"
 Function RefreshShellIcons
   ; By jerome tremblay - april 2003
   System::Call 'shell32.dll::SHChangeNotify(i, i, i, i) v \
-  (${SHCNE_ASSOCCHANGED}, ${SHCNF_IDLIST}, 0, 0)'
+  (, , 0, 0)'
 FunctionEnd
 
 ;-----------------------------------------------------------------------------
 ; Memento selections stored in registry.
 ;-----------------------------------------------------------------------------
 !define MEMENTO_REGISTRY_ROOT HKLM
-!define MEMENTO_REGISTRY_KEY Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@
+!define MEMENTO_REGISTRY_KEY Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED
 
 ;-----------------------------------------------------------------------------
 ; Modern User Interface (MUI) defintions and setup.
 ;-----------------------------------------------------------------------------
 !define MUI_ABORTWARNING
 ; MUI Settings / Icons
-!define MUI_ICON "${NSI_PATH}\Contrib\Graphics\Icons\orange-install-nsis.ico"
-!define MUI_UNICON "${NSI_PATH}\Contrib\Graphics\Icons\orange-uninstall-nsis.ico"
+!define MUI_ICON "\Contrib\Graphics\Icons\orange-install-nsis.ico"
+!define MUI_UNICON "\Contrib\Graphics\Icons\orange-uninstall-nsis.ico"
 ; MUI Settings / Header
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "${NSI_PATH}\Contrib\Graphics\Header\orange-r-nsis.bmp"
-!define MUI_HEADERIMAGE_UNBITMAP "${NSI_PATH}\Contrib\Graphics\Header\orange-uninstall-r-nsis.bmp"
+!define MUI_HEADERIMAGE_BITMAP "\Contrib\Graphics\Header\orange-r-nsis.bmp"
+!define MUI_HEADERIMAGE_UNBITMAP "\Contrib\Graphics\Header\orange-uninstall-r-nsis.bmp"
 ; MUI Settings / Wizard
-!define MUI_WELCOMEFINISHPAGE_BITMAP "${NSI_PATH}\Contrib\Graphics\Wizard\orange-nsis.bmp"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "${NSI_PATH}\Contrib\Graphics\Wizard\orange-uninstall-nsis.bmp"
-!define MUI_WELCOMEPAGE_TITLE "@CPACK_PACKAGE_NAME@ ${VERSION} Setup$\r$\nInstaller"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "\Contrib\Graphics\Wizard\orange-nsis.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "\Contrib\Graphics\Wizard\orange-uninstall-nsis.bmp"
+!define MUI_WELCOMEPAGE_TITLE "CLEED  Setup$\r$\nInstaller"
 !define MUI_WELCOMEPAGE_TEXT "This wizard will guide you through the installation.$\r$\n$\r$\n$_CLICK"
 !define MUI_COMPONENTSPAGE_SMALLDESC
-!define MUI_FINISHPAGE_TITLE "@CPACK_PACKAGE_NAME@ Install Completed"
-!define MUI_FINISHPAGE_LINK "Click here to visit the @CPACK_PACKAGE_NAME@ website."
-!define MUI_FINISHPAGE_LINK_LOCATION "@CPACK_PACKAGE_URL@"
+!define MUI_FINISHPAGE_TITLE "CLEED Install Completed"
+!define MUI_FINISHPAGE_LINK "Click here to visit the CLEED website."
+!define MUI_FINISHPAGE_LINK_LOCATION "http://www.reading.ac.uk/chemistry/about/staff/g-held.aspx"
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 !ifdef OPTION_FINISHPAGE_RELEASE_NOTES
    !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
@@ -115,7 +115,7 @@ FunctionEnd
    !define MUI_FINISHPAGE_NOAUTOCLOSE
    !define MUI_FINISHPAGE_RUN
    !define MUI_FINISHPAGE_RUN_TEXT "Open CLEED install directory"
-   !define MUI_FINISHPAGE_RUN_FUNCTION "Launch@CPACK_PACKAGE_NAME@"
+   !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchCLEED"
 !endif
 
 ;-----------------------------------------------------------------------------
@@ -123,7 +123,7 @@ FunctionEnd
 ;-----------------------------------------------------------------------------
 !insertmacro MUI_PAGE_WELCOME
 !ifdef OPTION_LICENSE_AGREEMENT
-   !insertmacro MUI_PAGE_LICENSE "${SOURCE_PATH}/LICENSE.txt"
+   !insertmacro MUI_PAGE_LICENSE "/LICENSE.txt"
 !endif
 Page custom PageReinstall PageLeaveReinstall
 !insertmacro MUI_PAGE_COMPONENTS
@@ -147,12 +147,12 @@ UninstPage custom un.UnPageUserAppData un.UnPageUserAppDataLeave
 #
 ##############################################################################
 
-Function Launch@CPACK_PACKAGE_NAME@
-   ;${UAC.CallFunctionAsUser} Launch@CPACK_PACKAGE_NAME@AsUser
-   Call Launch@CPACK_PACKAGE_NAME@AsUser
+Function LaunchCLEED
+   ; LaunchCLEEDAsUser
+   Call LaunchCLEEDAsUser
 FunctionEnd
 
-Function Launch@CPACK_PACKAGE_NAME@AsUser
+Function LaunchCLEEDAsUser
    Exec "Explorer.exe $\"$INSTDIR$\""
 FunctionEnd
 
@@ -163,27 +163,27 @@ FunctionEnd
 ##############################################################################
 
 !macro CheckForProcess processName gotoWhenFound gotoWhenNotFound
-   Processes::FindProcess ${processName}
-   StrCmp $R0 "0" ${gotoWhenNotFound} ${gotoWhenFound}
+   Processes::FindProcess 
+   StrCmp $R0 "0"  
 !macroend
 
 !macro ConfirmEndProcess processName
    MessageBox MB_YESNO|MB_ICONEXCLAMATION \
-     "Found ${processName} process(s) which need to be stopped.$\nDo you want the installer to stop these for you?" \
-     IDYES process_${processName}_kill IDNO process_${processName}_ended
-   process_${processName}_kill:
-      DetailPrint "Killing ${processName} processes."
-      Processes::KillProcess ${processName}
+     "Found  process(s) which need to be stopped.$\nDo you want the installer to stop these for you?" \
+     IDYES process__kill IDNO process__ended
+   process__kill:
+      DetailPrint "Killing  processes."
+      Processes::KillProcess 
       Sleep 1500
-      StrCmp $R0 "1" process_${processName}_ended
+      StrCmp $R0 "1" process__ended
       DetailPrint "Process to kill not found!"
-   process_${processName}_ended:
+   process__ended:
 !macroend
 
 !macro CheckAndConfirmEndProcess processName
-   !insertmacro CheckForProcess ${processName} 0 no_process_${processName}_to_end
-   !insertmacro ConfirmEndProcess ${processName}
-   no_process_${processName}_to_end:
+   !insertmacro CheckForProcess  0 no_process__to_end
+   !insertmacro ConfirmEndProcess 
+   no_process__to_end:
 !macroend
 
 !macro FileCopy FilePath TargetDir
@@ -192,7 +192,7 @@ FunctionEnd
 !macroend
 
 
-Function Ensure@CPACK_PACKAGE_NAME@Shutdown
+Function EnsureCLEEDShutdown
    !insertmacro CheckAndConfirmEndProcess "caoi_leed.exe"
    !insertmacro CheckAndConfirmEndProcess "caoi_rfac.exe"
    !insertmacro CheckAndConfirmEndProcess "cleed-gui.exe"
@@ -212,40 +212,40 @@ FunctionEnd
 ##############################################################################
 
 Function PageReinstall
-   ReadRegStr $R0 HKLM "Software\@CPACK_PACKAGE_NAME@" ""
+   ReadRegStr $R0 HKLM "Software\CLEED" ""
    StrCmp $R0 "" 0 +2
    Abort
 
    ;Detect version
-   ReadRegDWORD $R0 HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionMajor"
-   IntCmp $R0 ${VER_MAJOR} minor_check new_version older_version
+   ReadRegDWORD $R0 HKLM "Software\CLEED" "VersionMajor"
+   IntCmp $R0  minor_check new_version older_version
    minor_check:
-      ReadRegDWORD $R0 HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionMinor"
-      IntCmp $R0 ${VER_MINOR} build_check new_version older_version
+      ReadRegDWORD $R0 HKLM "Software\CLEED" "VersionMinor"
+      IntCmp $R0  build_check new_version older_version
    build_check:
-      ReadRegDWORD $R0 HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionBuild"
-      IntCmp $R0 ${VER_BUILD} same_version new_version older_version
+      ReadRegDWORD $R0 HKLM "Software\CLEED" "VersionBuild"
+      IntCmp $R0  same_version new_version older_version
 
    new_version:
-      !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 1" "Text" "An older version of @CPACK_PACKAGE_NAME@ is installed on your system. It is recommended that you uninstall the current version before installing. Select the operation you want to perform and click Next to continue."
+      !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 1" "Text" "An older version of CLEED is installed on your system. It is recommended that you uninstall the current version before installing. Select the operation you want to perform and click Next to continue."
       !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 2" "Text" "Uninstall before installing"
       !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 3" "Text" "Do not uninstall"
-      !insertmacro MUI_HEADER_TEXT "Already Installed" "Choose how you want to install @CPACK_PACKAGE_NAME@."
+      !insertmacro MUI_HEADER_TEXT "Already Installed" "Choose how you want to install CLEED."
       StrCpy $R0 "1"
       Goto reinst_start
 
    older_version:
-      !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 1" "Text" "A newer version of @CPACK_PACKAGE_NAME@ is already installed! It is not recommended that you install an older version. If you really want to install this older version, it is better to uninstall the current version first. Select the operation you want to perform and click Next to continue."
+      !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 1" "Text" "A newer version of CLEED is already installed! It is not recommended that you install an older version. If you really want to install this older version, it is better to uninstall the current version first. Select the operation you want to perform and click Next to continue."
       !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 2" "Text" "Uninstall before installing"
       !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 3" "Text" "Do not uninstall"
-      !insertmacro MUI_HEADER_TEXT "Already Installed" "Choose how you want to install @CPACK_PACKAGE_NAME@."
+      !insertmacro MUI_HEADER_TEXT "Already Installed" "Choose how you want to install CLEED."
       StrCpy $R0 "1"
       Goto reinst_start
 
    same_version:
-      !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 1" "Text" "@CPACK_PACKAGE_NAME@ ${VERSION} is already installed.\r\nSelect the operation you want to perform and click Next to continue."
+      !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 1" "Text" "CLEED  is already installed.\r\nSelect the operation you want to perform and click Next to continue."
       !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 2" "Text" "Add/Reinstall components"
-      !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 3" "Text" "Uninstall @CPACK_PACKAGE_NAME@"
+      !insertmacro INSTALLOPTIONS_WRITE "NSIS.InstallOptions.ini" "Field 3" "Text" "Uninstall CLEED"
       !insertmacro MUI_HEADER_TEXT "Already Installed" "Choose the maintenance option to perform."
       StrCpy $R0 "2"
 
@@ -260,12 +260,12 @@ Function PageLeaveReinstall
    StrCmp $R0 "2" 0 +3
    StrCmp $R1 "1" reinst_done reinst_uninstall
    reinst_uninstall:
-      ReadRegStr $R1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "UninstallString"
+      ReadRegStr $R1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "UninstallString"
       HideWindow
       ClearErrors
       ExecWait '$R1 _?=$INSTDIR'
       IfErrors no_remove_uninstaller
-      IfFileExists "$INSTDIR\@CPACK_PACKAGE_NAME@-gui.exe" no_remove_uninstaller
+      IfFileExists "$INSTDIR\CLEED-gui.exe" no_remove_uninstaller
       Delete $R1
       RMDir $INSTDIR
    no_remove_uninstaller:
@@ -281,68 +281,68 @@ FunctionEnd
 # INSTALLER SECTIONS
 #
 ##############################################################################
-SectionGroup "@CPACK_PACKAGE_NAME@"
+SectionGroup "CLEED"
 
-    ${MementoSection} "Runtime" SEC_@CPACK_PACKAGE_NAME@_RUNTIME
+     "Runtime" SEC_CLEED_RUNTIME
        SectionIn 1 2 3 RO
        SetDetailsPrint listonly
 
        SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ runtime essentials."
+       DetailPrint "Installing CLEED runtime essentials."
        SetDetailsPrint listonly
        SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\runtime\*"
+       File /r "/CLEED--win32\runtime\*"
         
-    ${MementoSectionEnd}
-
-    ${MementoSection} "Examples" SEC_@CPACK_PACKAGE_NAME@_EXAMPLES
-       SectionIn 1 2
-       SetDetailsPrint listonly
-
-       SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ example files."
-       SetDetailsPrint listonly
-       SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\examples\*"
-        
-    ${MementoSectionEnd}
     
-    ${MementoSection} "Phase Shifts" SEC_@CPACK_PACKAGE_NAME@_PHASE
+
+     "Examples" SEC_CLEED_EXAMPLES
        SectionIn 1 2
        SetDetailsPrint listonly
 
        SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ phaseshifts file library."
+       DetailPrint "Installing CLEED example files."
        SetDetailsPrint listonly
        SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\phaseshifts\*"
+       File /r "/CLEED--win32\examples\*"
         
-    ${MementoSectionEnd}
-
-    ${MementoSection} "Documentation" SEC_@CPACK_PACKAGE_NAME@_DOCUMENTATION
+    
+    
+     "Phase Shifts" SEC_CLEED_PHASE
        SectionIn 1 2
        SetDetailsPrint listonly
 
        SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ documentation."
+       DetailPrint "Installing CLEED phaseshifts file library."
        SetDetailsPrint listonly
        SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\documentation\*"
+       File /r "/CLEED--win32\phaseshifts\*"
         
-    ${MementoSectionEnd}
+    
 
-    ${MementoSection} "Explorer Integration" SEC_@CPACK_PACKAGE_NAME@_EXPLORER
+     "Documentation" SEC_CLEED_DOCUMENTATION
        SectionIn 1 2
        SetDetailsPrint listonly
 
        SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ Windows Explorer integration."
+       DetailPrint "Installing CLEED documentation."
        SetDetailsPrint listonly
        SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\explorer\*"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\icons\*"
+       File /r "/CLEED--win32\documentation\*"
+        
+    
+
+     "Explorer Integration" SEC_CLEED_EXPLORER
+       SectionIn 1 2
+       SetDetailsPrint listonly
+
+       SetDetailsPrint textonly
+       DetailPrint "Installing CLEED Windows Explorer integration."
+       SetDetailsPrint listonly
+       SetOutPath "$INSTDIR"
+       File /r "/CLEED--win32\explorer\*"
+       File /r "/CLEED--win32\icons\*"
        
-    ${MementoSectionEnd}
+    
     
     
 SectionGroupEnd
@@ -350,128 +350,128 @@ SectionGroupEnd
 SectionGroup "Shortcuts"
 
 !ifdef OPTION_SECTION_SC_START_MENU
-   ${MementoSection} "Start Menu Program Group" SEC_START_MENU
+    "Start Menu Program Group" SEC_START_MENU
       SectionIn 1 2
       SetDetailsPrint textonly
-      DetailPrint "Adding shortcuts for the @CPACK_PACKAGE_NAME@ program group to the Start Menu."
+      DetailPrint "Adding shortcuts for the CLEED program group to the Start Menu."
       SetDetailsPrint listonly
       SetShellVarContext all
-      RMDir /r "$SMPROGRAMS\@CPACK_PACKAGE_NAME@"
-      CreateDirectory "$SMPROGRAMS\@CPACK_PACKAGE_NAME@"
-      CreateShortCut "$SMPROGRAMS\@CPACK_PACKAGE_NAME@\LICENSE.lnk" "$INSTDIR\LICENSE.txt"
-      CreateShortCut "$SMPROGRAMS\@CPACK_PACKAGE_NAME@\@CPACK_PACKAGE_NAME@.lnk" "$INSTDIR\@CPACK_PACKAGE_NAME@-gui.exe"
-      CreateShortCut "$SMPROGRAMS\@CPACK_PACKAGE_NAME@\Release notes.lnk" "$INSTDIR\NOTES.txt"
-      CreateShortCut "$SMPROGRAMS\@CPACK_PACKAGE_NAME@\Uninstall.lnk" "$INSTDIR\uninstall.exe"
+      RMDir /r "$SMPROGRAMS\CLEED"
+      CreateDirectory "$SMPROGRAMS\CLEED"
+      CreateShortCut "$SMPROGRAMS\CLEED\LICENSE.lnk" "$INSTDIR\LICENSE.txt"
+      CreateShortCut "$SMPROGRAMS\CLEED\CLEED.lnk" "$INSTDIR\CLEED-gui.exe"
+      CreateShortCut "$SMPROGRAMS\CLEED\Release notes.lnk" "$INSTDIR\NOTES.txt"
+      CreateShortCut "$SMPROGRAMS\CLEED\Uninstall.lnk" "$INSTDIR\uninstall.exe"
       SetShellVarContext current
-   ${MementoSectionEnd}
+   
 !endif
 
 !ifdef OPTION_SECTION_SC_DESKTOP
-   ${MementoSection} "Desktop Shortcut" SEC_DESKTOP
+    "Desktop Shortcut" SEC_DESKTOP
       SectionIn 1 2
       SetDetailsPrint textonly
       DetailPrint "Creating Desktop Shortcuts"
       SetDetailsPrint listonly
-      CreateShortCut "$DESKTOP\@CPACK_PACKAGE_NAME@.lnk" "$INSTDIR"
-   ${MementoSectionEnd}
+      CreateShortCut "$DESKTOP\CLEED.lnk" "$INSTDIR"
+   
 !endif
 
 !ifdef OPTION_SECTION_SC_QUICK_LAUNCH
-   ${MementoSection} "Quick Launch Shortcut" SEC_QUICK_LAUNCH
+    "Quick Launch Shortcut" SEC_QUICK_LAUNCH
       SectionIn 1 2
       SetDetailsPrint textonly
       DetailPrint "Creating Quick Launch Shortcut"
       SetDetailsPrint listonly
-      CreateShortCut "$QUICKLAUNCH\@CPACK_PACKAGE_NAME@.lnk" "$INSTDIR"
-   ${MementoSectionEnd}
+      CreateShortCut "$QUICKLAUNCH\CLEED.lnk" "$INSTDIR"
+   
 !endif
 
 SectionGroupEnd
 
 SectionGroup "Development"
 
-    ${MementoSection} "Source Code" SEC_@CPACK_PACKAGE_NAME@_SOURCE
+     "Source Code" SEC_CLEED_SOURCE
        SectionIn 2
        SetDetailsPrint listonly
 
        SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ source code"
+       DetailPrint "Installing CLEED source code"
        SetDetailsPrint listonly
        SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\source\*"   
+       File /r "/CLEED--win32\source\*"   
     
-    ${MementoSectionEnd}
-
-    ${MementoSection} "Static Libraries" SEC_@CPACK_PACKAGE_NAME@_LIBRARIES
-       SectionIn 2
-       SetDetailsPrint listonly
-
-       SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ static libraries"
-       SetDetailsPrint listonly
-       SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\libraries\*"
-        
-    ${MementoSectionEnd}
     
-    ${MementoSection} "Header Files" SEC_@CPACK_PACKAGE_NAME@_HEADERS
+
+     "Static Libraries" SEC_CLEED_LIBRARIES
        SectionIn 2
        SetDetailsPrint listonly
 
        SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ C/C++ header files"
+       DetailPrint "Installing CLEED static libraries"
        SetDetailsPrint listonly
        SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\headers\*"
+       File /r "/CLEED--win32\libraries\*"
         
-    ${MementoSectionEnd}
-
-    ${MementoSection} "GUI" SEC_@CPACK_PACKAGE_NAME@_GUI
-       SectionIn 2
-       SetDetailsPrint listonly
-
-       SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ gui components."
-       SetDetailsPrint listonly
-       SetOutPath "$INSTDIR"
-       File /r "${NSIS_BUILD_PATH}/@CPACK_PACKAGE_NAME@-${VERSION}-win32\gui\*"
-        
-    ${MementoSectionEnd}    
     
-    ${MementoSection} "Extras" SEC_@CPACK_PACKAGE_NAME@_EXTRAS
+    
+     "Header Files" SEC_CLEED_HEADERS
        SectionIn 2
        SetDetailsPrint listonly
 
        SetDetailsPrint textonly
-       DetailPrint "Installing @CPACK_PACKAGE_NAME@ extras."
+       DetailPrint "Installing CLEED C/C++ header files"
+       SetDetailsPrint listonly
+       SetOutPath "$INSTDIR"
+       File /r "/CLEED--win32\headers\*"
+        
+    
+
+     "GUI" SEC_CLEED_GUI
+       SectionIn 2
+       SetDetailsPrint listonly
+
+       SetDetailsPrint textonly
+       DetailPrint "Installing CLEED gui components."
+       SetDetailsPrint listonly
+       SetOutPath "$INSTDIR"
+       File /r "/CLEED--win32\gui\*"
+        
+        
+    
+     "Extras" SEC_CLEED_EXTRAS
+       SectionIn 2
+       SetDetailsPrint listonly
+
+       SetDetailsPrint textonly
+       DetailPrint "Installing CLEED extras."
        SetDetailsPrint listonly
        SetOutPath "$INSTDIR"
         
-    ${MementoSectionEnd}
+    
     
 SectionGroupEnd
 
-${MementoSectionDone}
+
 
 ; Installer section descriptions
 ;--------------------------------
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@} "@CPACK_PACKAGE_NAME@ options."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_RUNTIME} "Core runtime components."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_EXAMPLES} "Include example models and files in 'examples' subdirectory."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_PHASE} "Install pre-made phase shifts into 'phase' subdirectory."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_DOCUMENTATION} "Include files for @CPACK_PACKAGE_NAME@ documentation."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_EXPLORER} "Add files for Windows Explorer shell integration."
+    !insertmacro MUI_DESCRIPTION_TEXT  "CLEED options."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Core runtime components."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Include example models and files in 'examples' subdirectory."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Install pre-made phase shifts into 'phase' subdirectory."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Include files for CLEED documentation."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Add files for Windows Explorer shell integration."
   
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_SOURCE} "Install source code for CLEED development."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_LIBRARIES} "Install static library archives."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_HEADERS} "C/C++ header files for the @CPACK_PACKAGE_NAME@ libraries."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_GUI} "Install (highly) experimental GUI frontends."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_@CPACK_PACKAGE_NAME@_EXTRA} "Extra components from 3rd parties."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Install source code for CLEED development."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Install static library archives."
+    !insertmacro MUI_DESCRIPTION_TEXT  "C/C++ header files for the CLEED libraries."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Install (highly) experimental GUI frontends."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Extra components from 3rd parties."
    
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_START_MENU} "@CPACK_PACKAGE_NAME@ program group."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_DESKTOP} "Desktop shortcut for @CPACK_PACKAGE_NAME@."
-    !insertmacro MUI_DESCRIPTION_TEXT ${SEC_QUICK_LAUNCH} "Quick Launch shortcut for @CPACK_PACKAGE_NAME@."
+    !insertmacro MUI_DESCRIPTION_TEXT  "CLEED program group."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Desktop shortcut for CLEED."
+    !insertmacro MUI_DESCRIPTION_TEXT  "Quick Launch shortcut for CLEED."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 Section -post
@@ -488,29 +488,29 @@ Section -post
    SetDetailsPrint listonly
 
    ; Version numbers used to detect existing installation version for comparison.
-   WriteRegStr HKLM "Software\@CPACK_PACKAGE_NAME@" "" $INSTDIR
-   WriteRegDWORD HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionMajor" "${VER_MAJOR}"
-   WriteRegDWORD HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionMinor" "${VER_MINOR}"
-   WriteRegDWORD HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionRevision" "${REVISION}"
-   WriteRegDWORD HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionBuild" "${VER_BUILD}"
+   WriteRegStr HKLM "Software\CLEED" "" $INSTDIR
+   WriteRegDWORD HKLM "Software\CLEED" "VersionMajor" ""
+   WriteRegDWORD HKLM "Software\CLEED" "VersionMinor" ""
+   WriteRegDWORD HKLM "Software\CLEED" "VersionRevision" ""
+   WriteRegDWORD HKLM "Software\CLEED" "VersionBuild" ""
 
    ; Add or Remove Programs entry.
-   WriteRegExpandStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "UninstallString" '"$INSTDIR\Uninstall.exe"'
-   WriteRegExpandStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "InstallLocation" "$INSTDIR"
-   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "DisplayName" "@CPACK_PACKAGE_NAME@"
-   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "Publisher" "@CPACK_PACKAGE_VENDOR@"
-   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "DisplayIcon" "$INSTDIR\Uninstall.exe,0"
-   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "DisplayVersion" "${VERSION}"
-   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "VersionMajor" "${VER_MAJOR}"
-   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "VersionMinor" "${VER_MINOR}.${REVISION}"
-   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "URLInfoAbout" "@CPACK_PACKAGE_URL@"
-   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "HelpLink" "@CPACK_PACKAGE_ULR@"
-   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "NoModify" "1"
-   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "NoRepair" "1"
+   WriteRegExpandStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "UninstallString" '"$INSTDIR\Uninstall.exe"'
+   WriteRegExpandStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "InstallLocation" "$INSTDIR"
+   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "DisplayName" "CLEED"
+   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "Publisher" "Liam Deacon"
+   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "DisplayIcon" "$INSTDIR\Uninstall.exe,0"
+   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "DisplayVersion" ""
+   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "VersionMajor" ""
+   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "VersionMinor" "."
+   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "URLInfoAbout" "http://www.reading.ac.uk/chemistry/about/staff/g-held.aspx"
+   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "HelpLink" ""
+   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "NoModify" "1"
+   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "NoRepair" "1"
 
-   WriteRegExpandStr HKCR "@CPACK_PACKAGE_NAME@\DefaultIcon" "" $INSTDIR\bin\cleed_nsym.exe,1
-   WriteRegExpandStr HKCR "@CPACK_PACKAGE_NAME@\shell" "" "open"
-   WriteRegExpandStr HKCR "@CPACK_PACKAGE_NAME@\shell\open\command" "" '"explorer.exe" "$INSTDIR" "%1"'
+   WriteRegExpandStr HKCR "CLEED\DefaultIcon" "" $INSTDIR\bin\cleed_nsym.exe,1
+   WriteRegExpandStr HKCR "CLEED\shell" "" "open"
+   WriteRegExpandStr HKCR "CLEED\shell\open\command" "" '"explorer.exe" "$INSTDIR" "%1"'
 
    ; Register CLEED environment variables
    WriteRegExpandStr HKCU "Environment" "CLEED_HOME" "$INSTDIR"
@@ -1003,7 +1003,7 @@ Section -post
    ; make sure Windows knows about the changes
    ;!insertmacro RefreshShellIcons
    Call RefreshShellIcons 
-   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000   
+   SendMessage   0 "STR:Environment" /TIMEOUT=5000   
    
    SetDetailsPrint textonly
    DetailPrint "Finished."
@@ -1021,50 +1021,50 @@ Var UnPageUserAppDataCheckbox_State
 Var UnPageUserAppDataEditBox
 
 Function un.UnPageUserAppData
-   !insertmacro MUI_HEADER_TEXT "Uninstall @CPACK_PACKAGE_NAME@" "Remove @CPACK_PACKAGE_NAME@'s data folder from your computer."
+   !insertmacro MUI_HEADER_TEXT "Uninstall CLEED" "Remove CLEED's data folder from your computer."
    nsDialogs::Create /NOUNLOAD 1018
    Pop $UnPageUserAppDataDialog
 
-   ${If} $UnPageUserAppDataDialog == error
+    $UnPageUserAppDataDialog == error
       Abort
-   ${EndIf}
+   
 
-   ${NSD_CreateLabel} 0 0 100% 12u "Do you want to delete @CPACK_PACKAGE_NAME@'s data folder?"
+    0 0 100% 12u "Do you want to delete CLEED's data folder?"
    Pop $0
 
-   ${NSD_CreateText} 0 13u 100% 12u "$LOCALAPPDATA\@CPACK_PACKAGE_NAME@"
+    0 13u 100% 12u "$LOCALAPPDATA\CLEED"
    Pop $UnPageUserAppDataEditBox
-   SendMessage $UnPageUserAppDataEditBox ${EM_SETREADONLY} 1 0
+   SendMessage $UnPageUserAppDataEditBox  1 0
 
-   ${NSD_CreateLabel} 0 46u 100% 24u "Leave unchecked to keep the data folder for later use or check to delete the data folder."
+    0 46u 100% 24u "Leave unchecked to keep the data folder for later use or check to delete the data folder."
    Pop $0
 
-   ${NSD_CreateCheckbox} 0 71u 100% 8u "Yes, delete this data folder."
+    0 71u 100% 8u "Yes, delete this data folder."
    Pop $UnPageUserAppDataCheckbox
 
    nsDialogs::Show
 FunctionEnd
 
 Function un.UnPageUserAppDataLeave
-   ${NSD_GetState} $UnPageUserAppDataCheckbox $UnPageUserAppDataCheckbox_State
+    $UnPageUserAppDataCheckbox $UnPageUserAppDataCheckbox_State
 FunctionEnd
 
 Section Uninstall
-   IfFileExists "$INSTDIR\@CPACK_PACKAGE_NAME@-gui.exe" @CPACK_PACKAGE_NAME@-gui_installed
-      MessageBox MB_YESNO "It does not appear that @CPACK_PACKAGE_NAME@ is installed in the directory '$INSTDIR'.$\r$\nContinue anyway (not recommended)?" IDYES @CPACK_PACKAGE_NAME@-gui_installed
+   IfFileExists "$INSTDIR\CLEED-gui.exe" CLEED-gui_installed
+      MessageBox MB_YESNO "It does not appear that CLEED is installed in the directory '$INSTDIR'.$\r$\nContinue anyway (not recommended)?" IDYES CLEED-gui_installed
       Abort "Uninstall aborted by user"
-   @CPACK_PACKAGE_NAME@-gui_installed:
+   CLEED-gui_installed:
 
    ; Delete registry keys.
-   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@"
-   DeleteRegValue HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionBuild"
-   DeleteRegValue HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionMajor"
-   DeleteRegValue HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionMinor"
-   DeleteRegValue HKLM "Software\@CPACK_PACKAGE_NAME@" "VersionRevision"
-   DeleteRegValue HKLM "Software\@CPACK_PACKAGE_NAME@" ""
-   DeleteRegKey HKLM "Software\@CPACK_PACKAGE_NAME@"
+   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED"
+   DeleteRegValue HKLM "Software\CLEED" "VersionBuild"
+   DeleteRegValue HKLM "Software\CLEED" "VersionMajor"
+   DeleteRegValue HKLM "Software\CLEED" "VersionMinor"
+   DeleteRegValue HKLM "Software\CLEED" "VersionRevision"
+   DeleteRegValue HKLM "Software\CLEED" ""
+   DeleteRegKey HKLM "Software\CLEED"
 
-   DeleteRegKey HKCR "@CPACK_PACKAGE_NAME@-gui"
+   DeleteRegKey HKCR "CLEED-gui"
 
    ; Delete Environment variables
    DeleteRegKey HKCU "Environment\CLEED_HOME"
@@ -1226,32 +1226,32 @@ Section Uninstall
    ; Start menu shortcuts.
    !ifdef OPTION_SECTION_SC_START_MENU
       SetShellVarContext all
-      RMDir /r "$SMPROGRAMS\@CPACK_PACKAGE_NAME@"
+      RMDir /r "$SMPROGRAMS\CLEED"
       SetShellVarContext current
    !endif
 
    ; Desktop shortcut.
    !ifdef OPTION_SECTION_SC_DESKTOP
-      IfFileExists "$DESKTOP\@CPACK_PACKAGE_NAME@.lnk" 0 +2
-         Delete "$DESKTOP\@CPACK_PACKAGE_NAME@.lnk"
+      IfFileExists "$DESKTOP\CLEED.lnk" 0 +2
+         Delete "$DESKTOP\CLEED.lnk"
    !endif
 
    ; Quick Launch shortcut.
    !ifdef OPTION_SECTION_SC_QUICK_LAUNCH
-      IfFileExists "$QUICKLAUNCH\@CPACK_PACKAGE_NAME@.lnk" 0 +2
-         Delete "$QUICKLAUNCH\@CPACK_PACKAGE_NAME@.lnk"
+      IfFileExists "$QUICKLAUNCH\CLEED.lnk" 0 +2
+         Delete "$QUICKLAUNCH\CLEED.lnk"
    !endif
 
    ; Remove all the Program Files.
    RMDir /r $INSTDIR
 
    ; Uninstall User Data if option is checked, otherwise skip.
-   ${If} $UnPageUserAppDataCheckbox_State == ${BST_CHECKED}
-      RMDir /r "$LOCALAPPDATA\@CPACK_PACKAGE_NAME@"
-   ${EndIf}
+    $UnPageUserAppDataCheckbox_State == 
+      RMDir /r "$LOCALAPPDATA\CLEED"
+   
 
    ; make sure windows knows about the change
-   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
+   SendMessage   0 "STR:Environment" /TIMEOUT=5000
    
    SetDetailsPrint textonly
    DetailPrint "Finished."
@@ -1267,13 +1267,13 @@ Function .onInit
    !insertmacro INSTALLOPTIONS_EXTRACT "NSIS.InstallOptions.ini"
 
    ; Remove Quick Launch option from Windows 7, as no longer applicable - usually.
-   ${IfNot} ${AtMostWinVista}
-      SectionSetText ${SEC_QUICK_LAUNCH} "Quick Launch Shortcut (N/A)"
-      SectionSetFlags ${SEC_QUICK_LAUNCH} ${SF_RO}
-      SectionSetInstTypes ${SEC_QUICK_LAUNCH} 0
-   ${EndIf}
+    
+      SectionSetText  "Quick Launch Shortcut (N/A)"
+      SectionSetFlags  
+      SectionSetInstTypes  0
+   
 
-   ${MementoSectionRestore}
+   
 
    UAC_Elevate:
       !insertmacro UAC_RunElevated
@@ -1296,7 +1296,7 @@ Function .onInit
       goto UAC_Elevate
 
    ; Prevent multiple instances.
-   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "@CPACK_PACKAGE_NAME@-guiInstaller") i .r1 ?e'
+   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "CLEED-guiInstaller") i .r1 ?e'
    Pop $R0
    StrCmp $R0 0 +3
       MessageBox MB_OK|MB_ICONEXCLAMATION "The installer is already running."
@@ -1304,17 +1304,17 @@ Function .onInit
 
    ; Use available InstallLocation when possible. This is useful in the uninstaller
    ; via re-install, which would otherwise use a default location - a bug.
-   ReadRegStr $R0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@CPACK_PACKAGE_NAME@" "InstallLocation"
+   ReadRegStr $R0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CLEED" "InstallLocation"
    StrCmp $R0 "" SkipSetInstDir
    StrCpy $INSTDIR $R0
    SkipSetInstDir:
 
-   ; Shutdown @CPACK_PACKAGE_NAME@ in case Add/Remove re-installer option used.
-   Call Ensure@CPACK_PACKAGE_NAME@Shutdown
+   ; Shutdown CLEED in case Add/Remove re-installer option used.
+   Call EnsureCLEEDShutdown
 FunctionEnd
 
 Function .onInstSuccess
-   ${MementoSectionSave}
+   
    #UAC::Unload ;Must call unload!
 FunctionEnd
 
@@ -1350,7 +1350,7 @@ Function un.onInit
       goto UAC_Elevate
 
    ; Prevent multiple instances.
-   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "@CPACK_PACKAGE_NAME@-guiUninstaller") i .r1 ?e'
+   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "CLEED-guiUninstaller") i .r1 ?e'
    Pop $R0
    StrCmp $R0 0 +3
       MessageBox MB_OK|MB_ICONEXCLAMATION "This uninstaller is already running."

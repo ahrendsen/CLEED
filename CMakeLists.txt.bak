@@ -869,9 +869,11 @@ INCLUDE(InstallRequiredSystemLibraries)
 SET (DOLLAR "$")
 SET (CPACK "@CPACK")
 SET (AT "@")
-CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/CMakeModules/NSIS.template.in"
+CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/CMakeModules/NSIS.template.cmake.in"
     "${CMAKE_SOURCE_DIR}/CMakeModules/NSIS.template.in" @IMMEDIATE) 
 # configure CPack - doesn't appear to work...
 CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/CPackOptions.cmake.in"
     "${CMAKE_BINARY_DIR}/CPackOptions.cmake" @ONLY)
 INCLUDE(CPack)
+
+# INCLUDE(CreateConfigLog)

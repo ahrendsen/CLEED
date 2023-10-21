@@ -56,9 +56,9 @@ interface with the command
 
     # But I haven't found out the proper syntax for this command.
     # so you're on your own for now.
-    #cmake -G <generator-name> --build build/ . 
+    cmake -G <generator-name> -D CMAKE_RC_COMPILER=<compiler-name> -B build/ . 
 
-Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles".
+Where <generator-name> is the target platform e.g. "Unix Makefiles" or "MinGW Makefiles". And <compiler-name> is "gcc" for me, but you might want something different. The above command successfully executes, but I only accomplished this after mangling a few other files, the modifications of which should be indicated in this commit.
 	
 Once the project has been built successfully, there will be a new folder called build.
 You can then compile using the following commands.
