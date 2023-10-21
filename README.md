@@ -25,10 +25,41 @@ The dependencies on Linux can be met by installing the following packages
     opencl-headers clinfo ocl-icd-libopencl1 gfortran \
     libgsl-dev qt4-dev-tools cmake-qt-gui libtiff-dev
     
+Note that if you're using Ubuntu 20.04 or above, Qt4 has been removed from the 
+repositories, so qt4-dev-tools won't be found.
+I hope to work on updating the program in the future to Qt5, but for now, 
+you'll just have to install an earlier version of Ubuntu if you want to run CLEED.
+You could attempt installing qt4 on Ubuntu 20.04 as noted 
+[here](https://askubuntu.com/questions/1234786/qt4-libqt4-in-ubuntu-20-04),
+but I haven't tried this myself so I can't say if it will work, but I wish 
+you the best of luck!
+
+I'm going ahead with trying the Qt5 way, since it seems like Liam Deacon
+had started the conversion process. The Qt5 packages you need to install
+are ([apparently](https://stackoverflow.com/questions/67373586/install-qt5-on-ubuntu-21-04)):
+
+    sudo apt-get install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+
 There are also python packages which will be used. I'll describe how you 
 can install them using Anaconda.
 
 To install anaconda,
+=======
+    
+There are also python packages which will be used. I'm still shaky on how
+environments work in python, but I'll assume you use Anaconda, because
+I can get it to work with that system.
+
+If you don't already have anaconda installed, and you're just installing 
+it to run this program, I would recommend that you install miniconda, 
+since it will take up less space, doesn't have unneccesary programs, 
+and will install faster. You can find the download link and install 
+instructions at
+[this webpage](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html):
+
+Make sure to restart your shell after installing it.
+You'll know its installed because there will be the string '(base)' 
+before your typical command prompt now.
 
 You should make a new conda
 environment for running CLEED, otherwise you'll run into dependency/
